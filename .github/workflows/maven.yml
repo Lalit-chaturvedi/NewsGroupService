@@ -38,7 +38,7 @@ jobs:
     - name: test
       run: |-
         ls -l
-        echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_username }} --password-stdin
+        docker login -u $docker_username -p $docker_password 
         docker images
     - name: Extract metadata (tags, labels) for Docker
       id: meta
