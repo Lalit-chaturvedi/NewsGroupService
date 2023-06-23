@@ -42,18 +42,13 @@ jobs:
       with:
         images: mridul04795/news-group-service
 
-    - name: Build Docker image
-      run: docker build -t mridul04795/news-group-service .
-
-    - name: Show Docker images
-      run: docker images
-
-    - name: Push Docker image to Docker Hub
-      uses: docker/build-push-action@v3.7.0
+    - name: Login Build and push Docker image
+      uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
       with:
         context: .
+        file: Dockerfile
         push: true
         tags: latest
-        env:
-           DOCKER_USERNAME: ${{ secrets.docker_username }}
-           DOCKER_PASSWORD: ${{ secrets.docker_password }}
+    - run: |-
+        ls -l
+        docker images
