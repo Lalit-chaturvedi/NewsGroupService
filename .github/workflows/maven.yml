@@ -39,8 +39,8 @@ jobs:
     - name: test
       run: |-
         ls -l
-        docker build . -t news-group-service
-        docker push news-group-service
+        docker build -t lalittechie/news-group-service:latest -f Dockerfile .
+        docker push lalittechie/news-group-service
         docker images
     - name: Extract metadata (tags, labels) for Docker
       id: meta
