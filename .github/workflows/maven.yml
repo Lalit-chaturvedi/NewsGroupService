@@ -39,7 +39,7 @@ jobs:
     - name: test
       run: |-
         ls -l
-        docker build . news-group-service
+        docker build . -t news-group-service
         docker push news-group-service
         docker images
     - name: Extract metadata (tags, labels) for Docker
