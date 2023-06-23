@@ -35,7 +35,9 @@ jobs:
       with:
         username: ${{ secrets.docker_username }}
         password: ${{ secrets.docker_password }}
-
+    - run: |-
+        ls -l
+        docker images
     - name: Extract metadata (tags, labels) for Docker
       id: meta
       uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
@@ -49,6 +51,4 @@ jobs:
         file: Dockerfile
         push: true
         tags: latest
-    - run: |-
-        ls -l
-        docker images
+    
