@@ -30,15 +30,15 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    #- name: Log in to Docker Hub
-    # uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-    #  with:
-    #    username: ${{ secrets.docker_username }}
-    #   password: ${{ secrets.docker_password }}
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+       username: ${{ secrets.docker_username }}
+       password: ${{ secrets.docker_password }}
+       logout: false
     - name: test
       run: |-
         ls -l
-        docker login -u $docker_username -p $docker_password 
         docker images
     - name: Extract metadata (tags, labels) for Docker
       id: meta
